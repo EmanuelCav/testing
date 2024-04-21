@@ -72,12 +72,12 @@ describe('Test General', () => {
         const productId = "65b54674647153e428f4b948"
 
         it('GET cart Should response a successfully status', async () => {
-            const response = await requester.get("/api/carts/" + cartId)
+            const response = await requester.get("/api/carts/" + cartId).set("Authorization", `Bearer ` + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YjU1Mzc3ZjlhNzc3NzliY2QwOTU1ZSIsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5jb2RlckBjb2Rlci5jb20iLCJpYXQiOjE3MTE0MTI2NjIsImV4cCI6MTcxNjU5NjY2Mn0.7aoP3MPVAustQIoIYtIdZbFbwiZFEJaKSpp_Q_o-rYY')
             expect(response.statusCode).to.equal(200)
         })
 
         it('Remove should response OK', async () => {
-            const response = await requester.delete("/api/carts/" + cartId)
+            const response = await requester.delete("/api/carts/" + cartId).set("Authorization", `Bearer ` + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YjU1Mzc3ZjlhNzc3NzliY2QwOTU1ZSIsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5jb2RlckBjb2Rlci5jb20iLCJpYXQiOjE3MTE0MTI2NjIsImV4cCI6MTcxNjU5NjY2Mn0.7aoP3MPVAustQIoIYtIdZbFbwiZFEJaKSpp_Q_o-rYY')
             expect(response.ok).to.be.true
         })
 
@@ -86,7 +86,7 @@ describe('Test General', () => {
         }
 
         it('Set quantity must have that property', async () => {
-            const response = await requester.put(`/api/carts/${cartId}/products/${productId}`).send(data)
+            const response = await requester.put(`/api/carts/${cartId}/products/${productId}`).send(data).set("Authorization", `Bearer ` + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YjU1Mzc3ZjlhNzc3NzliY2QwOTU1ZSIsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5jb2RlckBjb2Rlci5jb20iLCJpYXQiOjE3MTE0MTI2NjIsImV4cCI6MTcxNjU5NjY2Mn0.7aoP3MPVAustQIoIYtIdZbFbwiZFEJaKSpp_Q_o-rYY')
             expect(response.body).to.have.property("quantity")
         })
 
